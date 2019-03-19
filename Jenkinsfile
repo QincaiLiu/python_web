@@ -1,24 +1,22 @@
-image: ubuntu
-stages:
-  - build
-  - test
-  - deploy
+pipeline {
+    agent any
 
-PythonBuild:
-  stage: build
-  script: 
-    - echo `pwd` > test.sh
-    - echo test
-    - chmod +x test.sh; ./test.sh
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
 
-hello-test:
-    stage: test
-    script: 
-        - echo `pwd` > test.sh
-        - chmod +x test.sh; ./test.sh
-
-final-deploy:
-    stage: deploy
-    script: 
-        - echo `pwd` > test.sh
-        - chmod +x test.sh; ./test.sh
